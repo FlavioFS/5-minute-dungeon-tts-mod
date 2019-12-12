@@ -8,8 +8,8 @@ Fan-made Tabletop Simulator mod version of the board game **[5-Minute Dungeon](h
 
 > This game is **much more fun** in real life with your friends, so if you like it support the creators and buy the **[Original Game](https://www.kickstarter.com/projects/wiggles3d/5-minute-dungeon-the-most-fun-you-can-have-in-5-mi)**.
 
-## Visit this mod at [Steam Workshop]()
-[5-Minute Dungeon by Melon Soda]()
+## Visit this mod at [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
+[5-Minute Dungeon by Melon Soda](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 
 This mod is a improved fork of [Samantha's mod](https://steamcommunity.com/sharedfiles/filedetails/?id=1243924721).
 
