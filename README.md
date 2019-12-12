@@ -35,5 +35,5 @@ This mod is an improved fork of [Samantha's mod](https://steamcommunity.com/shar
 ### Next minion button (swiftly flips next door to convenient position)
 [![Next door gif](https://i.postimg.cc/GpyBYYST/sample3-next.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
 
-### Automated card drawing (calculates hand size base on amount of players count)
+### Automated card drawing (calculates hand size based on amount of players)
 [![Draw cards gif](https://i.postimg.cc/4dRY1drL/sample4-draw.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
