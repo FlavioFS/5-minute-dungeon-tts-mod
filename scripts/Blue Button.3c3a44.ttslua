@@ -1,0 +1,52 @@
+DECK_GUID = "c5b1c8"
+DECK = null
+COLOR = "Blue"
+
+function onload()
+  -- clickable area
+  self.createButton({
+    click_function="click", function_owner=self,
+    position={0, 0, 0}, height=600, width=600, color={1,1,1,0}, label=""
+  })
+  -- button label
+  self.createButton({
+    click_function="click", function_owner=self,
+    position={0, 0.2, 0}, height=1, width=1, color={1,1,1,1}, label="DRAW", font_size=300
+  })
+  
+  DECK = getObjectFromGUID(DECK_GUID)
+end
+
+function click()
+  hand_size = Global.call("get_player_hand_size", {})
+  hand_count = count_items_in_hand()
+  draw(hand_size - hand_count)
+end
+
+function draw(count)
+  if count > 0 then
+    if DECK == null then
+      DECK = getObjectFromGUID(DECK_GUID)
+    end
+    if DECK then
+      DECK.deal(count, COLOR)
+    end
+  end
+end
+
+function shuffle()
+  if DECK == null then
+    DECK = getObjectFromGUID(DECK_GUID)
+  end
+  if DECK then
+    DECK.shuffle()
+  end
+end
+
+function count_items_in_hand()
+  count = 0
+  for key, val in pairs(Player[COLOR].getHandObjects()) do
+    count = count + 1
+  end
+  return count
+end

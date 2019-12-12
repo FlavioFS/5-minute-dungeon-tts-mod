@@ -1,0 +1,21 @@
+CURRENT_BOSS_KEY = 0
+
+function onload()
+  -- clickable area
+  self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=600, width=600, color={1,1,1,0}, label=""
+  })
+  -- button label
+  self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=1, width=1, color={1,1,1,1}, label="BOSS", font_size=300
+  })
+
+  CURRENT_BOSS_KEY = Global.call("get_boss_key", {})
+end
+
+function click()
+  CURRENT_BOSS_KEY = (CURRENT_BOSS_KEY + 1) % Global.call("get_total_bosses", {})
+  Global.call("select_boss", CURRENT_BOSS_KEY)
+end

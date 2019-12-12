@@ -1,0 +1,80 @@
+PLAYER_COUNT = 0
+CURRENT_BOSS_KEY = -1
+BOSS_GUIDS = {
+    [0] = "4463e3",
+    [1] = "72558d",
+    [2] = "2e6f8c",
+    [3] = "770ffb",
+    [4] = "11368c",
+    [5] = "563d59",
+    [6] = "d50f8b"
+}
+BOSS_BAG_GUID = "3e7715"
+SELECTED_BOSS = nil
+
+function count_players()
+    COLORS = { "Blue", "Green", "Yellow", "Red", "Purple" }
+    PLAYER_COUNT = 0
+    for key, value in pairs(COLORS) do
+      if Player[value].seated then
+        PLAYER_COUNT = PLAYER_COUNT + 1
+      end
+    end
+    return PLAYER_COUNT
+end
+
+function get_player_count()
+    return PLAYER_COUNT
+end
+
+function select_boss(key)
+    if key >= 0 and key <= 6 then
+        CURRENT_BOSS_KEY = key
+        boss_bag = getObjectFromGUID(BOSS_BAG_GUID)
+        for i, guid in pairs(BOSS_GUIDS) do
+            boss_i = getObjectFromGUID(guid)
+            if boss_i then
+                boss_bag.putObject(boss_i)
+            end
+        end
+        SELECTED_BOSS = boss_bag.takeObject({
+            guid = BOSS_GUIDS[key],
+            callback_function = function()
+                SELECTED_BOSS.setPosition({0, 0, 0})
+                SELECTED_BOSS.setRotation({0, -60, 0})
+            end
+        })
+        if SELECTED_BOSS then
+            SELECTED_BOSS.setPosition({0, 0, 0})
+            SELECTED_BOSS.setRotation({0, -60, 0})
+        end
+        return true
+    end
+    return false
+end
+
+function select_next_boss()
+    select_boss((CURRENT_BOSS_KEY + 1) % get_total_bosses())
+    return get_boss_key()
+end
+
+function get_boss_key()
+    return CURRENT_BOSS_KEY
+end
+
+function lock_boss()
+    SELECTED_BOSS.setLock(true)
+end
+
+function get_total_bosses()
+    return 7
+end
+
+function get_player_hand_size()
+    if get_player_count() == 1 then return 6
+    elseif get_player_count() == 2 then return 5
+    elseif get_player_count() == 3 then return 4
+    elseif get_player_count() == 4 or get_player_count() == 5 then return 3
+    else return 0
+    end
+end

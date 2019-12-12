@@ -1,0 +1,59 @@
+CURRENT_CARD = nil
+LAST_CARD = nil
+GAME_DECK = nil
+MONSTERS_LEFT = nil
+MONSTER_ZONE_GUID = "1137f5"
+ALTERNATE_Y = true
+
+function onload()
+  -- clickable area
+  self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=600, width=600, color={1,1,1,0}, label=""
+  })
+  -- button label
+  self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=1, width=1, color={1,1,1,1}, label="<<\nGO!", font_size=300
+  })
+end
+
+function set_game_deck(deck_obj)
+  GAME_DECK = deck_obj
+end
+
+function next_position()
+  ALTERNATE_Y = not ALTERNATE_Y
+  if ALTERNATE_Y then
+    return { 2.5, 2, 0.5 }
+  else
+    return { -0.5, 2, 2.3 }
+  end
+end
+
+-- position = {0.85,2,1.45},
+function click()
+  if MONSTERS_LEFT != 0 then
+    if GAME_DECK != nil then
+      MONSTERS_LEFT = GAME_DECK.getQuantity()
+      CURRENT_CARD = GAME_DECK.takeObject({
+        position = next_position(),
+        rotation = {0,-60,0},
+        flip = true
+      })
+      MONSTERS_LEFT = MONSTERS_LEFT - 1
+      print("Enemies left: ", MONSTERS_LEFT)
+    elseif LAST_CARD and MONSTERS_LEFT == 1 then
+      LAST_CARD.setPositionSmooth(next_position(), false, false)
+      LAST_CARD.setRotationSmooth({0,-60,0}, false, false)
+      MONSTERS_LEFT = 0
+      print("BOSS TIME!")
+    end
+  end
+end
+
+function onObjectEnterScriptingZone(zone, obj)
+  if zone.getGUID() == MONSTER_ZONE_GUID and MONSTERS_LEFT == 1 and obj != CURRENT_CARD then
+    LAST_CARD = obj
+  end
+end

@@ -1,0 +1,109 @@
+DOORS_GUID = "912436"
+CHALLENGES_GUID = "26a9fe"
+NEXT_BUTTON_GUID = "5ce70e"
+DOORS_PER_BOSS = {
+  [0] = 20,
+  [1] = 25,
+  [2] = 30,
+  [3] = 35,
+  [4] = 40,
+  [5] = 20,
+  [6] = 50
+}
+CHALLENGES_PER_BOSS = {
+  [0] = 0,
+  [1] = 0,
+  [2] = 0,
+  [3] = 0,
+  [4] = 0,
+  [5] = 10,
+  [6] = 0
+}
+PLAYER_DECK_GUIDS = {
+  Blue = "c5b1c8",
+  Green = "8d95f8",
+  Yellow = "bee90d",
+  Red = "bde309",
+  Purple = "f88779"
+}
+
+function onload()
+  -- clickable area
+  self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=600, width=600, color={1,1,1,0}, label=""
+  })
+  -- button label
+  button = self.createButton({
+      click_function="click", function_owner=self,
+      position={0, 0.2, 0}, height=1, width=1, color={1,1,1,1}, label="START", font_size=300
+  })
+end
+
+function click()
+  player_count = Global.call("count_players", {})
+  if player_count >= 1 and player_count <= 6 then
+    print("\nSetting up game for ", player_count, " players...")
+    current_boss_key = Global.call("get_boss_key", {})
+    if current_boss_key <= 0 then
+      Global.call("select_boss", 0)
+      Wait.frames(function() Global.call("lock_boss", {}) end, 60)
+    else
+      Global.call("lock_boss", {})
+    end
+    shuffle_players()
+    setup_monsters()
+  else
+    print("\nCannot start!\nThis game officially requires 2 ~ 5 players, but 1 is also allowed here in TTS.\nPlease take seats (change your colors).")
+  end
+end
+
+function shuffle_cut_monsters(door_count, challenge_count)
+  doors = getObjectFromGUID(DOORS_GUID)
+  challenges = getObjectFromGUID(CHALLENGES_GUID)
+  if doors and challenges then
+    doors.shuffle()
+    challenges.shuffle()
+    selected_doors = doors.cut(door_count)[2]
+    selected_challenges = challenges.cut(challenge_count)[2]
+    if selected_doors and selected_challenges then
+      game_deck = selected_doors.putObject(selected_challenges)
+      if game_deck then
+        Wait.frames(function() game_deck.setRotation({0, -60, 0}) end, 10)
+        Wait.frames(function() game_deck.setPosition({-0.85, 2, -1.45}) end, 20)
+        Wait.frames(function() game_deck.flip() end, 60)
+        Wait.frames(function() game_deck.shuffle() end, 90)
+        next_button = getObjectFromGUID(NEXT_BUTTON_GUID)
+        if next_button then
+          next_button.call("set_game_deck", game_deck)
+        end
+      end
+    end
+    return true
+  end
+  return false
+end
+
+function setup_monsters()
+  -- Calculates setup amounts
+  boss_key = Global.call("get_boss_key", {})
+  print("=====================")
+  print(" Boss #", boss_key+1)
+  print("=====================")
+  door_count = DOORS_PER_BOSS[boss_key]
+  challenge_count = CHALLENGES_PER_BOSS[boss_key] + 2 * Global.call("get_player_count", {})
+  print("Doors: ", door_count)
+  print("Challenges: ", challenge_count)
+  print("Players: ", Global.call("get_player_count", {}))
+  print("Hand size: ", Global.call("get_player_hand_size", {}))
+  print("---------------------")
+  
+  -- Cuts monster decks
+  shuffle_cut_monsters(door_count, challenge_count)
+end
+
+function shuffle_players()
+  for key, val in pairs(PLAYER_DECK_GUIDS) do
+    getObjectFromGUID(val).shuffle()
+  end
+end
