@@ -11,7 +11,7 @@ Fan-made Tabletop Simulator mod version of the board game **[5-Minute Dungeon](h
 ## Visit this mod at my [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 [5-Minute Dungeon by Melon Soda](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 
-This mod is a improved fork of [Samantha's mod](https://steamcommunity.com/sharedfiles/filedetails/?id=1243924721).
+This mod is an improved fork of [Samantha's mod](https://steamcommunity.com/sharedfiles/filedetails/?id=1243924721).
 
 ## Fork changes
   - Original card arts from [5-Minute Dungeon Wiki](https://5minutedungeon.fandom.com/wiki/5-Minute_Dungeon_Wiki)
