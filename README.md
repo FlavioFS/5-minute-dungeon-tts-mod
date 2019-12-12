@@ -29,7 +29,7 @@ This mod is a improved fork of [Samantha's mod](https://steamcommunity.com/share
 ### Boss selection button (cycles through bosses from bag)
 [![Boss selection gif](https://i.postimg.cc/BbMtsCtk/sample1-boss.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
 
-### Automated game setup (doors and challenges base on selected boss)
+### Automated game setup (calculates doors and challenges base on selected boss)
 [![Start game gif](https://i.postimg.cc/DZQ8phh2/sample2-setup.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
 
 ### Next minion button (swiftly flips next door to convenient position)
