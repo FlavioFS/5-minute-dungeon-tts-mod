@@ -8,7 +8,7 @@ Fan-made Tabletop Simulator mod version of the board game **[5-Minute Dungeon](h
 
 > This game is **much more fun** in real life with your friends, so if you like it support the creators and buy the **[Original Game](https://www.kickstarter.com/projects/wiggles3d/5-minute-dungeon-the-most-fun-you-can-have-in-5-mi)**.
 
-## Visit this mod at [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
+## Visit this mod at my [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 [5-Minute Dungeon by Melon Soda](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 
 This mod is a improved fork of [Samantha's mod](https://steamcommunity.com/sharedfiles/filedetails/?id=1243924721).
@@ -35,5 +35,5 @@ This mod is a improved fork of [Samantha's mod](https://steamcommunity.com/share
 ### Next minion button (swiftly flips next door to convenient position)
 [![Next door gif](https://i.postimg.cc/GpyBYYST/sample3-next.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
 
-### Automated card drawing (calculates hand size base on player count)
+### Automated card drawing (calculates hand size base on amount of players count)
 [![Draw cards gif](https://i.postimg.cc/4dRY1drL/sample4-draw.gif)](https://www.youtube.com/watch?v=CQoq1DQI2VI)
