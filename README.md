@@ -15,7 +15,7 @@ This mod is an improved fork of [Samantha's mod](https://steamcommunity.com/shar
 
 ## Fork changes
   - Original card arts from [5-Minute Dungeon Wiki](https://5minutedungeon.fandom.com/wiki/5-Minute_Dungeon_Wiki)
-  - Heroes match player's seat color (change colors to change heroes)
+  - Hero selection through player's seat color (change colors to change heroes)
   - Cleaner table
   - Scales tweeked to improve gameplay
   - Scripts:
