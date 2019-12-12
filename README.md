@@ -2,6 +2,7 @@
 
 ## Description
 Fan-made Tabletop Simulator mod version of the board game **[5-Minute Dungeon](https://www.kickstarter.com/projects/wiggles3d/5-minute-dungeon-the-most-fun-you-can-have-in-5-mi)**.
+To counterbalance agility losses from real life to Tabletop Simulator, I've coded some facilities to make the gameplay swifter.
 
 ## Visit this mod at my [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
 [5-Minute Dungeon by Melon Soda](https://steamcommunity.com/sharedfiles/filedetails/?id=1934822334)
